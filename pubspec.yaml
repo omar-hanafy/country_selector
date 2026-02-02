@@ -1,0 +1,32 @@
+name: country_selector
+description: Country picker to select a country
+version: 1.0.0
+repository: https://github.com/omar-hanafy/country_selector
+homepage: https://github.com/omar-hanafy/country_selector
+
+environment:
+  sdk: ">=3.10.4 <4.0.0"
+  flutter: ">=3.38.5"
+
+dependencies:
+  circle_flags: ^5.0.1
+  diacritic: ^0.1.6
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: ">=0.18.0 <=1.0.0"
+  # for iso codes, phone_numbers_parser needs to stay currently
+  # as the country_selector library needs to be
+  # compatible with phone_form_field
+  phone_numbers_parser: ^9.0.19
+  string_search_algorithms: ^1.0.1
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+  leak_tracker_flutter_testing: any
+
+flutter:
+  generate: true
