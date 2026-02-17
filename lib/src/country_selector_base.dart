@@ -14,6 +14,9 @@ abstract class CountrySelectorBase extends StatefulWidget {
   /// list divider between favorites and others defaults countries
   final List<IsoCode> favoriteCountries;
 
+  /// Whether to show a separator between favorites and the country list.
+  final bool addFavoritesSeparator;
+
   /// Callback triggered when user select a country
   final ValueChanged<IsoCode> onCountrySelected;
 
@@ -60,6 +63,7 @@ abstract class CountrySelectorBase extends StatefulWidget {
     this.noResultMessage,
     List<IsoCode>? favoriteCountries,
     List<IsoCode>? countries,
+    bool? addFavoritesSeparator,
     bool? searchAutofocus,
     this.subtitleStyle,
     this.titleStyle,
@@ -67,34 +71,37 @@ abstract class CountrySelectorBase extends StatefulWidget {
     this.searchBoxTextStyle,
     this.searchBoxIconColor,
     double? flagSize,
-  })  : countries = countries ?? IsoCode.values,
-        favoriteCountries = favoriteCountries ?? const [],
-        showDialCode = showDialCode ?? false,
-        flagSize = flagSize ?? 40,
-        searchAutofocus = searchAutofocus ?? kIsWeb;
+  }) : countries = countries ?? IsoCode.values,
+       favoriteCountries = favoriteCountries ?? const [],
+       addFavoritesSeparator = addFavoritesSeparator ?? true,
+       showDialCode = showDialCode ?? false,
+       flagSize = flagSize ?? 40,
+       searchAutofocus = searchAutofocus ?? kIsWeb;
 }
 
 abstract class CountrySelectorBaseState<W extends CountrySelectorBase>
     extends State<W> {
-  late CountrySelectorController controller;
+  CountrySelectorController? _controller;
+  CountrySelectorController get controller => _controller!;
   String searchText = '';
 
   @override
   void dispose() {
-    controller.dispose();
+    _controller?.dispose();
     super.dispose();
   }
 
   @override
-  didChangeDependencies() {
+  void didChangeDependencies() {
     super.didChangeDependencies();
-    controller = CountrySelectorController(
+    _controller?.dispose();
+    _controller = CountrySelectorController(
       context,
       widget.countries,
       widget.favoriteCountries,
     );
     // language might have changed
-    controller.search(searchText);
+    _controller!.search(searchText);
   }
 
   /// when the user types in the search box

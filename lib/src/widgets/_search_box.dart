@@ -24,25 +24,35 @@ class SearchBox extends StatefulWidget {
 }
 
 class _SearchBoxState extends State<SearchBox> {
-  String _previousValue = '';
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
   void handleChange(String text) {
     widget.onChanged(text);
-
-    final isAutofill = text.length > 3 && _previousValue == '';
-    if (isAutofill) {
-      widget.onSubmitted();
-    }
-    _previousValue = text;
   }
 
   @override
   Widget build(BuildContext context) {
+    final baseDecoration =
+        widget.decoration ??
+        InputDecoration(
+          prefixIcon: Icon(
+            Icons.search,
+            size: 24,
+            color: widget.searchIconColor,
+          ),
+          filled: true,
+          isDense: true,
+          border: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          hintText:
+              CountrySelectorLocalization.of(context)?.search ??
+              CountrySelectorLocalizationEn().search,
+        );
+
+    final effectiveDecoration = widget.searchIconColor == null
+        ? baseDecoration
+        : baseDecoration.copyWith(prefixIconColor: widget.searchIconColor);
+
     return TextField(
       autofocus: widget.autofocus,
       onChanged: handleChange,
@@ -50,20 +60,7 @@ class _SearchBoxState extends State<SearchBox> {
       cursorColor: widget.style?.color,
       style: widget.style ?? Theme.of(context).textTheme.titleLarge,
       autofillHints: const [AutofillHints.countryName],
-      decoration:
-          widget.decoration ??
-          InputDecoration(
-            prefixIcon: const Icon(Icons.search, size: 24),
-            filled: true,
-            isDense: true,
-            border: OutlineInputBorder(
-              borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(20),
-            ),
-            hintText:
-                CountrySelectorLocalization.of(context)?.search ??
-                CountrySelectorLocalizationEn().search,
-          ),
+      decoration: effectiveDecoration,
     );
   }
 }

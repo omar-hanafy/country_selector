@@ -13,6 +13,7 @@ class CountryListView extends StatelessWidget {
 
   /// list of favorite countries to display at the top
   final List<SearchableCountry> favorites;
+  final bool addFavoritesSeparator;
 
   /// proxy to the ListView.builder controller (ie: [ScrollView.controller])
   final ScrollController? scrollController;
@@ -34,6 +35,7 @@ class CountryListView extends StatelessWidget {
     required this.favorites,
     required this.onTap,
     required this.noResultMessage,
+    this.addFavoritesSeparator = true,
     this.scrollController,
     this.scrollPhysics,
     this.showDialCode = true,
@@ -46,7 +48,7 @@ class CountryListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final allListElements = [
       ...favorites,
-      if (favorites.isNotEmpty) null, // delimiter
+      if (addFavoritesSeparator && favorites.isNotEmpty) null, // delimiter
       ...countries,
     ];
 

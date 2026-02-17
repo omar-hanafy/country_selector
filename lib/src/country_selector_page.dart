@@ -11,6 +11,7 @@ class CountrySelectorPage extends CountrySelectorBase {
     required super.onCountrySelected,
     super.scrollController,
     super.scrollPhysics,
+    super.addFavoritesSeparator,
     super.showDialCode,
     super.noResultMessage,
     super.favoriteCountries,
@@ -28,7 +29,8 @@ class CountrySelectorPage extends CountrySelectorBase {
   CountrySelectorPageState createState() => CountrySelectorPageState();
 }
 
-class CountrySelectorPageState extends CountrySelectorBaseState {
+class CountrySelectorPageState
+    extends CountrySelectorBaseState<CountrySelectorPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,10 +40,17 @@ class CountrySelectorPageState extends CountrySelectorBaseState {
           autofocus: widget.searchAutofocus,
           onChanged: onSearch,
           onSubmitted: onSubmitted,
-          decoration: widget.searchBoxDecoration ??
+          decoration:
+              widget.searchBoxDecoration ??
               InputDecoration(
                 border: InputBorder.none,
-                hintText: CountrySelectorLocalization.of(context)?.search ??
+                prefixIcon: Icon(
+                  Icons.search,
+                  size: 24,
+                  color: widget.searchBoxIconColor,
+                ),
+                hintText:
+                    CountrySelectorLocalization.of(context)?.search ??
                     CountrySelectorLocalizationEn().search,
               ),
           style: widget.searchBoxTextStyle,
@@ -54,6 +63,7 @@ class CountrySelectorPageState extends CountrySelectorBaseState {
           return CountryListView(
             countries: controller.filteredCountries,
             favorites: controller.filteredFavorites,
+            addFavoritesSeparator: widget.addFavoritesSeparator,
             showDialCode: widget.showDialCode,
             onTap: (country) => widget.onCountrySelected(country.isoCode),
             flagSize: widget.flagSize,

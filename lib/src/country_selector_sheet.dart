@@ -11,6 +11,7 @@ class CountrySelectorSheet extends CountrySelectorBase {
     required super.onCountrySelected,
     super.scrollController,
     super.scrollPhysics,
+    super.addFavoritesSeparator,
     super.showDialCode,
     super.noResultMessage,
     super.favoriteCountries,
@@ -66,6 +67,7 @@ class CountrySelectorSheetState
               return CountryListView(
                 countries: controller.filteredCountries,
                 favorites: controller.filteredFavorites,
+                addFavoritesSeparator: widget.addFavoritesSeparator,
                 showDialCode: widget.showDialCode,
                 onTap: (country) => widget.onCountrySelected(country.isoCode),
                 flagSize: widget.flagSize,

@@ -110,6 +110,7 @@ extension DynamicLocalization on CountrySelectorLocalization {
       IsoCode.HU => hu_,
       IsoCode.ID => id_,
       IsoCode.IE => ie_,
+      IsoCode.IL => il_,
       IsoCode.IM => im_,
       IsoCode.IN => in_,
       IsoCode.IO => io_,
@@ -255,7 +256,6 @@ extension DynamicLocalization on CountrySelectorLocalization {
       IsoCode.ZA => za_,
       IsoCode.ZM => zm_,
       IsoCode.ZW => zw_,
-      _ => '',
     };
   }
 }

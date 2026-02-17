@@ -6,6 +6,7 @@ import 'package:phone_numbers_parser/phone_numbers_parser.dart';
 
 class CountrySelectorController with ChangeNotifier {
   final _finder = CountryFinder();
+  List<SearchableCountry> _allCountries = [];
   List<SearchableCountry> _countries = [];
   List<SearchableCountry> _filteredCountries = [];
   List<SearchableCountry> _favoriteCountries = [];
@@ -19,26 +20,32 @@ class CountrySelectorController with ChangeNotifier {
     List<IsoCode> countriesIsoCode,
     List<IsoCode> favoriteCountriesIsoCode,
   ) {
-    final filteredCountries =
-        countriesIsoCode.where((c) => c != IsoCode.IL).toList();
-    final filteredFavorites =
-        favoriteCountriesIsoCode.where((c) => c != IsoCode.IL).toList();
+    final filteredFavorites = favoriteCountriesIsoCode
+        .where((c) => c != IsoCode.IL)
+        .toList();
+    final filteredCountries = countriesIsoCode
+        .where((c) => c != IsoCode.IL)
+        .toList();
 
-    _countries = _buildLocalizedCountryList(context, filteredCountries);
-    _favoriteCountries =
-        _buildLocalizedCountryList(context, filteredFavorites);
+    _allCountries = _buildLocalizedCountryList(context, filteredCountries);
+    _favoriteCountries = _buildLocalizedCountryList(context, filteredFavorites);
+    final favoriteSet = filteredFavorites.toSet();
+    _countries = _allCountries
+        .where((country) => !favoriteSet.contains(country.isoCode))
+        .toList(growable: false);
     _filteredCountries = _countries;
+    _filteredFavoriteCountries = _favoriteCountries;
   }
 
   void search(String searchedText) {
-    _filteredCountries = _finder.whereText(
-      text: searchedText,
-      countries: _countries,
-    );
-    // when there is a search, no need for favorites
     if (searchedText.isEmpty) {
+      _filteredCountries = _countries;
       _filteredFavoriteCountries = _favoriteCountries;
     } else {
+      _filteredCountries = _finder.whereText(
+        text: searchedText,
+        countries: _allCountries,
+      );
       _filteredFavoriteCountries = [];
     }
     notifyListeners();
@@ -54,7 +61,8 @@ class CountrySelectorController with ChangeNotifier {
     List<IsoCode> isoCodes,
   ) {
     // we need the localized names in order to search
-    final localization = CountrySelectorLocalization.of(context) ??
+    final localization =
+        CountrySelectorLocalization.of(context) ??
         CountrySelectorLocalizationEn();
     return isoCodes
         .map(
