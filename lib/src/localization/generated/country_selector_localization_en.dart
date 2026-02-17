@@ -47,13 +47,7 @@ class CountrySelectorLocalizationEn extends CountrySelectorLocalization {
   String get am_ => 'Armenia';
 
   @override
-  String get an_ => 'Netherlands Antilles';
-
-  @override
   String get ao_ => 'Angola';
-
-  @override
-  String get aq_ => 'Antarctica';
 
   @override
   String get ar_ => 'Argentina';
@@ -126,9 +120,6 @@ class CountrySelectorLocalizationEn extends CountrySelectorLocalization {
 
   @override
   String get bt_ => 'Bhutan';
-
-  @override
-  String get bv_ => 'Bouvet Island';
 
   @override
   String get bw_ => 'Botswana';
@@ -296,9 +287,6 @@ class CountrySelectorLocalizationEn extends CountrySelectorLocalization {
   String get gr_ => 'Greece';
 
   @override
-  String get gs_ => 'South Georgia and the South Sandwich Islands';
-
-  @override
   String get gt_ => 'Guatemala';
 
   @override
@@ -312,9 +300,6 @@ class CountrySelectorLocalizationEn extends CountrySelectorLocalization {
 
   @override
   String get hk_ => 'Hong Kong';
-
-  @override
-  String get hm_ => 'Heard Island and McDonald Islands';
 
   @override
   String get hn_ => 'Honduras';
@@ -569,9 +554,6 @@ class CountrySelectorLocalizationEn extends CountrySelectorLocalization {
   String get pm_ => 'Saint Pierre and Miquelon';
 
   @override
-  String get pn_ => 'Pitcairn Islands';
-
-  @override
   String get pr_ => 'Puerto Rico';
 
   @override
@@ -677,9 +659,6 @@ class CountrySelectorLocalizationEn extends CountrySelectorLocalization {
   String get td_ => 'Chad';
 
   @override
-  String get tf_ => 'French Southern Territories';
-
-  @override
   String get tg_ => 'Togo';
 
   @override
@@ -723,9 +702,6 @@ class CountrySelectorLocalizationEn extends CountrySelectorLocalization {
 
   @override
   String get ug_ => 'Uganda';
-
-  @override
-  String get um_ => 'United States Minor Outlying Islands';
 
   @override
   String get us_ => 'United States';

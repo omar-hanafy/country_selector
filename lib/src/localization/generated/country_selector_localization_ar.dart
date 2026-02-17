@@ -47,13 +47,7 @@ class CountrySelectorLocalizationAr extends CountrySelectorLocalization {
   String get am_ => 'أرمينيا';
 
   @override
-  String get an_ => 'جزر الأنتيل الهولندية';
-
-  @override
   String get ao_ => 'أنغولا';
-
-  @override
-  String get aq_ => 'أنتاركتيكا';
 
   @override
   String get ar_ => 'الأرجنتين';
@@ -126,9 +120,6 @@ class CountrySelectorLocalizationAr extends CountrySelectorLocalization {
 
   @override
   String get bt_ => 'بوتان';
-
-  @override
-  String get bv_ => 'جزيرة بوفيه';
 
   @override
   String get bw_ => 'بوتسوانا';
@@ -296,9 +287,6 @@ class CountrySelectorLocalizationAr extends CountrySelectorLocalization {
   String get gr_ => 'اليونان';
 
   @override
-  String get gs_ => 'جورجيا الجنوبية وجزر ساندويتش الجنوبية';
-
-  @override
   String get gt_ => 'غواتيمالا';
 
   @override
@@ -312,9 +300,6 @@ class CountrySelectorLocalizationAr extends CountrySelectorLocalization {
 
   @override
   String get hk_ => 'هونغ كونغ';
-
-  @override
-  String get hm_ => 'جزيرة هيرد وجزر ماكدونالد';
 
   @override
   String get hn_ => 'هندوراس';
@@ -569,9 +554,6 @@ class CountrySelectorLocalizationAr extends CountrySelectorLocalization {
   String get pm_ => 'سان بيير وميكلون';
 
   @override
-  String get pn_ => 'جزر بيتكيرن';
-
-  @override
   String get pr_ => 'بورتوريكو';
 
   @override
@@ -677,9 +659,6 @@ class CountrySelectorLocalizationAr extends CountrySelectorLocalization {
   String get td_ => 'تشاد';
 
   @override
-  String get tf_ => 'الأقاليم الجنوبية الفرنسية';
-
-  @override
   String get tg_ => 'توغو';
 
   @override
@@ -723,9 +702,6 @@ class CountrySelectorLocalizationAr extends CountrySelectorLocalization {
 
   @override
   String get ug_ => 'أوغندا';
-
-  @override
-  String get um_ => 'جزر الولايات المتحدة الصغيرة النائية';
 
   @override
   String get us_ => 'الولايات المتحدة';

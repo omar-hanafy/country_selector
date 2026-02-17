@@ -63,13 +63,15 @@ import 'country_selector_localization_en.dart';
 /// property.
 abstract class CountrySelectorLocalization {
   CountrySelectorLocalization(String locale)
-      : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
   static CountrySelectorLocalization? of(BuildContext context) {
     return Localizations.of<CountrySelectorLocalization>(
-        context, CountrySelectorLocalization);
+      context,
+      CountrySelectorLocalization,
+    );
   }
 
   static const LocalizationsDelegate<CountrySelectorLocalization> delegate =
@@ -87,16 +89,16 @@ abstract class CountrySelectorLocalization {
   /// of delegates is preferred or required.
   static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
       <LocalizationsDelegate<dynamic>>[
-    delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-  ];
+        delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ];
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('ar'),
-    Locale('en')
+    Locale('en'),
   ];
 
   /// No description provided for @noResultMessage.
@@ -171,23 +173,11 @@ abstract class CountrySelectorLocalization {
   /// **'Armenia'**
   String get am_;
 
-  /// No description provided for @an_.
-  ///
-  /// In en, this message translates to:
-  /// **'Netherlands Antilles'**
-  String get an_;
-
   /// No description provided for @ao_.
   ///
   /// In en, this message translates to:
   /// **'Angola'**
   String get ao_;
-
-  /// No description provided for @aq_.
-  ///
-  /// In en, this message translates to:
-  /// **'Antarctica'**
-  String get aq_;
 
   /// No description provided for @ar_.
   ///
@@ -332,12 +322,6 @@ abstract class CountrySelectorLocalization {
   /// In en, this message translates to:
   /// **'Bhutan'**
   String get bt_;
-
-  /// No description provided for @bv_.
-  ///
-  /// In en, this message translates to:
-  /// **'Bouvet Island'**
-  String get bv_;
 
   /// No description provided for @bw_.
   ///
@@ -669,12 +653,6 @@ abstract class CountrySelectorLocalization {
   /// **'Greece'**
   String get gr_;
 
-  /// No description provided for @gs_.
-  ///
-  /// In en, this message translates to:
-  /// **'South Georgia and the South Sandwich Islands'**
-  String get gs_;
-
   /// No description provided for @gt_.
   ///
   /// In en, this message translates to:
@@ -704,12 +682,6 @@ abstract class CountrySelectorLocalization {
   /// In en, this message translates to:
   /// **'Hong Kong'**
   String get hk_;
-
-  /// No description provided for @hm_.
-  ///
-  /// In en, this message translates to:
-  /// **'Heard Island and McDonald Islands'**
-  String get hm_;
 
   /// No description provided for @hn_.
   ///
@@ -1215,12 +1187,6 @@ abstract class CountrySelectorLocalization {
   /// **'Saint Pierre and Miquelon'**
   String get pm_;
 
-  /// No description provided for @pn_.
-  ///
-  /// In en, this message translates to:
-  /// **'Pitcairn Islands'**
-  String get pn_;
-
   /// No description provided for @pr_.
   ///
   /// In en, this message translates to:
@@ -1431,12 +1397,6 @@ abstract class CountrySelectorLocalization {
   /// **'Chad'**
   String get td_;
 
-  /// No description provided for @tf_.
-  ///
-  /// In en, this message translates to:
-  /// **'French Southern Territories'**
-  String get tf_;
-
   /// No description provided for @tg_.
   ///
   /// In en, this message translates to:
@@ -1526,12 +1486,6 @@ abstract class CountrySelectorLocalization {
   /// In en, this message translates to:
   /// **'Uganda'**
   String get ug_;
-
-  /// No description provided for @um_.
-  ///
-  /// In en, this message translates to:
-  /// **'United States Minor Outlying Islands'**
-  String get um_;
 
   /// No description provided for @us_.
   ///
@@ -1649,7 +1603,8 @@ class _CountrySelectorLocalizationDelegate
   @override
   Future<CountrySelectorLocalization> load(Locale locale) {
     return SynchronousFuture<CountrySelectorLocalization>(
-        lookupCountrySelectorLocalization(locale));
+      lookupCountrySelectorLocalization(locale),
+    );
   }
 
   @override
@@ -1670,8 +1625,9 @@ CountrySelectorLocalization lookupCountrySelectorLocalization(Locale locale) {
   }
 
   throw FlutterError(
-      'CountrySelectorLocalization.delegate failed to load unsupported locale "$locale". This is likely '
-      'an issue with the localizations generation tool. Please file an issue '
-      'on GitHub with a reproducible sample app and the gen-l10n configuration '
-      'that was used.');
+    'CountrySelectorLocalization.delegate failed to load unsupported locale "$locale". This is likely '
+    'an issue with the localizations generation tool. Please file an issue '
+    'on GitHub with a reproducible sample app and the gen-l10n configuration '
+    'that was used.',
+  );
 }
